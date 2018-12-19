@@ -6,6 +6,10 @@
     <edmx:Diagrams>
       <Diagram DiagramId="cebc62a901f441e98004675c43d37bd7" Name="Diagram1">
         <EntityTypeShape EntityType="CapsuleModel.TaskModel" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CapsuleModel.Project" Width="1.5" PointX="3.625" PointY="1.125" />
+        <EntityTypeShape EntityType="CapsuleModel.User" Width="1.5" PointX="5.875" PointY="5.125" />
+        <AssociationConnector Association="CapsuleModel.FK_Task_Project" />
+        <AssociationConnector Association="CapsuleModel.FK_Users_Task" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

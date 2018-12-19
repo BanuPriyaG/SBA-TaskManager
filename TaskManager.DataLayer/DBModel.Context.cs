@@ -25,6 +25,8 @@ namespace TaskManager.DataLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<TaskModel> Tasks { get; set; }
+        public virtual DbSet<TaskModel> TaskModels { get; set; }
+        public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

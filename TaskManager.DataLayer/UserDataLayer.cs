@@ -3,52 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskManager.Entities;
 
 namespace TaskManager.DataLayer
 {
-    public class TaskDataLayer
+    public class UserDataLayer
     {
-        public List<TaskModel> GetTasksList()
+        public List<User> GetUsersList()
         {
             using (CapsuleEntities2 dbContext = new CapsuleEntities2())
             {
-                return dbContext.TaskModels.ToList();
+                return dbContext.Users.ToList();
             }
         }
 
-        public TaskModel GetTaskById(int taskId)
+        public User GetUserById(int userId)
         {
             using (CapsuleEntities2 dbContext = new CapsuleEntities2())
             {
-                return dbContext.TaskModels.Find(taskId);
+                return dbContext.Users.Find(userId);
             }
         }
 
-        public void AddTask(TaskModel task)
+        public void AddUser(User user)
         {
             using (CapsuleEntities2 dbContext = new CapsuleEntities2())
             {
-                dbContext.TaskModels.Add(task);
+                dbContext.Users.Add(user);
                 dbContext.SaveChanges();
             }
         }
 
-        public void UpdateTask(TaskModel task)
+        public void UpdateUser(User user)
         {
             using (CapsuleEntities2 dbContext = new CapsuleEntities2())
             {
-                dbContext.Entry(task).State = System.Data.Entity.EntityState.Modified;
+                dbContext.Entry(user).State = System.Data.Entity.EntityState.Modified;
                 dbContext.SaveChanges();
             }
         }
 
-        public void DeleteTask(int taskId)
+        public void DeleteUser(int userId)
         {
             using (CapsuleEntities2 dbContext = new CapsuleEntities2())
             {
-                var task = dbContext.TaskModels.Find(taskId);
-                if (task != null)dbContext.TaskModels.Remove(task);
+                var user = dbContext.Users.Find(userId);
+                if (user != null) dbContext.Users.Remove(user);
                 dbContext.SaveChanges();
             }
         }

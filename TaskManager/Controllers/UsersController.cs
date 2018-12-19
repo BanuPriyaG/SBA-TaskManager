@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using TaskManager.BusinessLayer;
@@ -6,14 +9,14 @@ using TaskManager.DataLayer;
 
 namespace TaskManager.ServiceLayer.Controllers
 {
-    [EnableCors(origins:"*", headers:"*", methods:"*")]
-    public class TasksController : ApiController,IDisposable
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class UsersController : ApiController,IDisposable
     {
-        public IHttpActionResult GetAllTasks()
+        public IHttpActionResult GetAllUsers()
         {
             try
             {
-                var response = Tasks.GetAllTasks();
+                var response = Users.GetAllUsers();
                 if (response != null) return Ok(response);
                 else return NotFound();
             }
@@ -23,11 +26,11 @@ namespace TaskManager.ServiceLayer.Controllers
             }
         }
 
-        public IHttpActionResult GetTask(int taskId)
+        public IHttpActionResult GetUser(int userId)
         {
             try
             {
-                var response = Tasks.GetTaskById(taskId);
+                var response = Users.GetUserById(userId);
                 if (response != null) return Ok(response);
                 else return NotFound();
             }
@@ -36,11 +39,11 @@ namespace TaskManager.ServiceLayer.Controllers
                 throw ex;
             }
         }
-        public IHttpActionResult Post(TaskModel task)
+        public IHttpActionResult Post(User user)
         {
             try
             {
-                Tasks.AddTask(task);
+                Users.AddUser(user);
                 return Ok("Added");
             }
             catch (Exception ex)
@@ -49,11 +52,11 @@ namespace TaskManager.ServiceLayer.Controllers
             }
         }
 
-        public IHttpActionResult Put(TaskModel task)
+        public IHttpActionResult Put(User user)
         {
             try
             {
-                Tasks.UpdateTask(task);
+                Users.UpdateUser(user);
                 return Ok("Updated");
             }
             catch (Exception ex)
@@ -62,11 +65,11 @@ namespace TaskManager.ServiceLayer.Controllers
             }
         }
 
-        public IHttpActionResult Delete(int taskId)
+        public IHttpActionResult Delete(int userId)
         {
             try
             {
-                Tasks.DeleteTask(taskId);
+                Users.DeleteUser(userId);
                 return Ok("Deleted");
             }
             catch (Exception ex)
@@ -74,7 +77,6 @@ namespace TaskManager.ServiceLayer.Controllers
                 throw ex;
             }
         }
-
         public new void Dispose()
         {
             GC.Collect();

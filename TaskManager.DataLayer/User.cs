@@ -12,15 +12,14 @@ namespace TaskManager.DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class TaskModel
+    public partial class User
     {
-        public int Task_Id { get; set; }
-        public string Task { get; set; }
-        public System.DateTime Start_Date { get; set; }
-        public System.DateTime End_Date { get; set; }
-        public int Priority { get; set; }
-        public string ParentTask { get; set; }
-        public Nullable<int> Project_ID { get; set; }
+        public int User_ID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Employee_ID { get; set; }
+        public int Project_ID { get; set; }
+        public int Task_ID { get; set; }
     
         public virtual Project Project { get; set; }
     }

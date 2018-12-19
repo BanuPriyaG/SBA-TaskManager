@@ -6,14 +6,14 @@ using TaskManager.DataLayer;
 
 namespace TaskManager.ServiceLayer.Controllers
 {
-    [EnableCors(origins:"*", headers:"*", methods:"*")]
-    public class TasksController : ApiController,IDisposable
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class ProjectsController : ApiController,IDisposable
     {
-        public IHttpActionResult GetAllTasks()
+        public IHttpActionResult GetAllProjects()
         {
             try
             {
-                var response = Tasks.GetAllTasks();
+                var response = Projects.GetAllProjects();
                 if (response != null) return Ok(response);
                 else return NotFound();
             }
@@ -23,11 +23,11 @@ namespace TaskManager.ServiceLayer.Controllers
             }
         }
 
-        public IHttpActionResult GetTask(int taskId)
+        public IHttpActionResult GetProject(int projectId)
         {
             try
             {
-                var response = Tasks.GetTaskById(taskId);
+                var response = Projects.GetProjectById(projectId);
                 if (response != null) return Ok(response);
                 else return NotFound();
             }
@@ -36,11 +36,11 @@ namespace TaskManager.ServiceLayer.Controllers
                 throw ex;
             }
         }
-        public IHttpActionResult Post(TaskModel task)
+        public IHttpActionResult Post(Project project)
         {
             try
             {
-                Tasks.AddTask(task);
+                Projects.AddProject(project);
                 return Ok("Added");
             }
             catch (Exception ex)
@@ -49,11 +49,11 @@ namespace TaskManager.ServiceLayer.Controllers
             }
         }
 
-        public IHttpActionResult Put(TaskModel task)
+        public IHttpActionResult Put(Project project)
         {
             try
             {
-                Tasks.UpdateTask(task);
+                Projects.UpdateProject(project);
                 return Ok("Updated");
             }
             catch (Exception ex)
@@ -62,11 +62,11 @@ namespace TaskManager.ServiceLayer.Controllers
             }
         }
 
-        public IHttpActionResult Delete(int taskId)
+        public IHttpActionResult Delete(int projectId)
         {
             try
             {
-                Tasks.DeleteTask(taskId);
+                Projects.DeleteProject(projectId);
                 return Ok("Deleted");
             }
             catch (Exception ex)
@@ -74,7 +74,6 @@ namespace TaskManager.ServiceLayer.Controllers
                 throw ex;
             }
         }
-
         public new void Dispose()
         {
             GC.Collect();

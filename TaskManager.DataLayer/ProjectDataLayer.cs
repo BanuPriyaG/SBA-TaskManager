@@ -3,52 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskManager.Entities;
 
 namespace TaskManager.DataLayer
 {
-    public class TaskDataLayer
+    public class ProjectDataLayer
     {
-        public List<TaskModel> GetTasksList()
+        public List<Project> GetProjectsList()
         {
             using (CapsuleEntities2 dbContext = new CapsuleEntities2())
             {
-                return dbContext.TaskModels.ToList();
+                return dbContext.Projects.ToList();
             }
         }
 
-        public TaskModel GetTaskById(int taskId)
+        public Project GetProjectById(int projectId)
         {
             using (CapsuleEntities2 dbContext = new CapsuleEntities2())
             {
-                return dbContext.TaskModels.Find(taskId);
+                return dbContext.Projects.Find(projectId);
             }
         }
 
-        public void AddTask(TaskModel task)
+        public void AddProject(Project project)
         {
             using (CapsuleEntities2 dbContext = new CapsuleEntities2())
             {
-                dbContext.TaskModels.Add(task);
+                dbContext.Projects.Add(project);
                 dbContext.SaveChanges();
             }
         }
 
-        public void UpdateTask(TaskModel task)
+        public void UpdateProject(Project project)
         {
             using (CapsuleEntities2 dbContext = new CapsuleEntities2())
             {
-                dbContext.Entry(task).State = System.Data.Entity.EntityState.Modified;
+                dbContext.Entry(project).State = System.Data.Entity.EntityState.Modified;
                 dbContext.SaveChanges();
             }
         }
 
-        public void DeleteTask(int taskId)
+        public void DeleteProject(int projectId)
         {
             using (CapsuleEntities2 dbContext = new CapsuleEntities2())
             {
-                var task = dbContext.TaskModels.Find(taskId);
-                if (task != null)dbContext.TaskModels.Remove(task);
+                var project = dbContext.Projects.Find(projectId);
+                if (project != null) dbContext.Projects.Remove(project);
                 dbContext.SaveChanges();
             }
         }
