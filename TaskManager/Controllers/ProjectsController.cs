@@ -74,10 +74,5 @@ namespace TaskManager.ServiceLayer.Controllers
                 throw ex;
             }
         }
-
-        public new void Dispose()
-        {
-            GC.Collect();
-        }
     }
 }

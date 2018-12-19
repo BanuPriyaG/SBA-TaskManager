@@ -7,7 +7,7 @@ using TaskManager.DataLayer;
 namespace TaskManager.ServiceLayer.Controllers
 {
     [EnableCors(origins:"*", headers:"*", methods:"*")]
-    public class TasksController : ApiController,IDisposable
+    public class TasksController : ApiController
     {
         public IHttpActionResult GetAllTasks()
         {
@@ -73,11 +73,6 @@ namespace TaskManager.ServiceLayer.Controllers
             {
                 throw ex;
             }
-        }
-
-        public new void Dispose()
-        {
-            GC.Collect();
         }
     }
 }
