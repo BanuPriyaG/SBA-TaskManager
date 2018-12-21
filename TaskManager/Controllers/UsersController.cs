@@ -9,7 +9,7 @@ using TaskManager.DataLayer;
 
 namespace TaskManager.ServiceLayer.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins:"*", headers:"*", methods:"*")]
     public class UsersController : ApiController
     {
         public IHttpActionResult GetAllUsers()

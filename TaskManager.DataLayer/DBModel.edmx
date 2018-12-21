@@ -26,6 +26,7 @@
           <Property Name="Priority" Type="int" Nullable="false" />
           <Property Name="ParentTask" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Project_ID" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -91,6 +92,7 @@
           <Property Name="ParentTask" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Project_ID" Type="Int32" />
           <NavigationProperty Name="Project" Relationship="CapsuleModel.FK_Task_Project" FromRole="TaskModel" ToRole="Project" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="CapsuleEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TaskModels" EntityType="CapsuleModel.TaskModel" />
@@ -162,6 +164,7 @@
           <EntitySetMapping Name="TaskModels">
             <EntityTypeMapping TypeName="CapsuleModel.TaskModel">
               <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
                 <ScalarProperty Name="Task_Id" ColumnName="Task_Id" />
                 <ScalarProperty Name="Task" ColumnName="Task" />

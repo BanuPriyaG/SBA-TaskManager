@@ -23,6 +23,19 @@ namespace TaskManager.ServiceLayer.Controllers
             }
         }
 
+        public IHttpActionResult GetTasksByProjectID(int projId)
+        {
+            try
+            {
+                var response = Tasks.GetTasksByProjectID(projId);
+                if (response != null) return Ok(response);
+                else return NotFound();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public IHttpActionResult GetTask(int taskId)
         {
             try

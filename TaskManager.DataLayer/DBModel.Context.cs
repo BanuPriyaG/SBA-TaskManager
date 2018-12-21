@@ -18,13 +18,14 @@ namespace TaskManager.DataLayer
         public CapsuleEntities2()
             : base("name=CapsuleEntities2")
         {
-            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.LazyLoadingEnabled =false;
             this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
+            
         }
     
         public virtual DbSet<TaskModel> TaskModels { get; set; }

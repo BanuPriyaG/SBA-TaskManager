@@ -17,6 +17,14 @@ namespace TaskManager.DataLayer
             }
         }
 
+        public List<TaskModel> GetTasksByProjectID(int projId)
+        {
+            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            {
+                return dbContext.TaskModels.Where(x => x.Project_ID == projId).ToList();
+            }
+        }
+
         public TaskModel GetTaskById(int taskId)
         {
             using (CapsuleEntities2 dbContext = new CapsuleEntities2())

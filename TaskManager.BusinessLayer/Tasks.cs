@@ -15,6 +15,11 @@ namespace TaskManager.BusinessLayer
             return dataLayer.GetTasksList();
         }
 
+        public static List<TaskModel> GetTasksByProjectID(int projId)
+        {
+            TaskDataLayer dataLayer = new TaskDataLayer();
+            return dataLayer.GetTasksByProjectID(projId);
+        }
         public static TaskModel GetTaskById(int taskId)
         {
             TaskDataLayer dataLayer = new TaskDataLayer();

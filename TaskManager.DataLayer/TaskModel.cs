@@ -21,6 +21,7 @@ namespace TaskManager.DataLayer
         public int Priority { get; set; }
         public string ParentTask { get; set; }
         public Nullable<int> Project_ID { get; set; }
+        public string Status { get; set; }
     
         public virtual Project Project { get; set; }
     }

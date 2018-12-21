@@ -15,6 +15,11 @@ namespace TaskManager.BusinessLayer
             return dataLayer.GetProjectsList();
         }
 
+        public static List<Project> GetProjectByName(string projectName)
+        {
+            ProjectDataLayer dataLayer = new ProjectDataLayer();
+            return dataLayer.GetProjectByName(projectName);
+        }
         public static Project GetProjectById(int projectId)
         {
             ProjectDataLayer dataLayer = new ProjectDataLayer();

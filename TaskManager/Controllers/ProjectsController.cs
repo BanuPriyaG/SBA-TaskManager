@@ -6,7 +6,7 @@ using TaskManager.DataLayer;
 
 namespace TaskManager.ServiceLayer.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins:"*", headers:"*", methods:"*")]
     public class ProjectsController : ApiController,IDisposable
     {
         public IHttpActionResult GetAllProjects()
@@ -23,6 +23,19 @@ namespace TaskManager.ServiceLayer.Controllers
             }
         }
 
+        public IHttpActionResult GetProjectByName(string projectName)
+        {
+            try
+            {
+                var response = Projects.GetProjectByName(projectName);
+                if (response != null) return Ok(response);
+                else return NotFound();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public IHttpActionResult GetProject(int projectId)
         {
             try
