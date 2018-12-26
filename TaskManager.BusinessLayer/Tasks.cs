@@ -26,6 +26,12 @@ namespace TaskManager.BusinessLayer
             return dataLayer.GetTaskById(taskId);
         }
 
+        public static object GetTasksByName(string taskName)
+        {
+            TaskDataLayer dataLayer = new TaskDataLayer();
+            return dataLayer.GetTasksByName(taskName);
+        }
+
         public static void AddTask(TaskModel task)
         {
             TaskDataLayer dataLayer = new TaskDataLayer();

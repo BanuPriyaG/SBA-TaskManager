@@ -33,6 +33,12 @@ namespace TaskManager.BusinessLayer
             dataLayer.UpdateUser(user);
         }
 
+        public static List<User> GetByUserName(string userName)
+        {
+            UserDataLayer dataLayer = new UserDataLayer();
+            return dataLayer.GetByUserName(userName);
+        }
+
         public static void DeleteUser(int userId)
         {
             UserDataLayer dataLayer = new UserDataLayer();

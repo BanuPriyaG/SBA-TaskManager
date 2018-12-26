@@ -26,6 +26,20 @@ namespace TaskManager.ServiceLayer.Controllers
             }
         }
 
+        public IHttpActionResult GetByUserName(string userName)
+        {
+            try
+            {
+                var response = Users.GetByUserName(userName);
+                if (response != null) return Ok(response);
+                else return NotFound();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public IHttpActionResult GetUser(int userId)
         {
             try

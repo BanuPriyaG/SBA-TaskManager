@@ -42,6 +42,14 @@ namespace TaskManager.DataLayer
             }
         }
 
+        public List<User> GetByUserName(string userName)
+        {
+            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            {
+                return dbContext.Users.Where(a => a.FirstName.Contains(userName) || a.LastName.Contains(userName)).ToList();
+            }
+        }
+
         public void DeleteUser(int userId)
         {
             using (CapsuleEntities2 dbContext = new CapsuleEntities2())
