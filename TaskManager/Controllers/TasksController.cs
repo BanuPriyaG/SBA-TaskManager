@@ -62,7 +62,7 @@ namespace TaskManager.ServiceLayer.Controllers
                 throw ex;
             }
         }
-        public IHttpActionResult Post(TaskModel task)
+        public IHttpActionResult Post(DataLayer.Task task)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace TaskManager.ServiceLayer.Controllers
             }
         }
 
-        public IHttpActionResult Put(TaskModel task)
+        public IHttpActionResult Put(DataLayer.Task task)
         {
             try
             {
