@@ -13,23 +13,22 @@ namespace TaskManager.DataLayer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CapsuleEntities2 : DbContext
+    public partial class CapsuleEntities : DbContext
     {
-        public CapsuleEntities2()
-            : base("name=CapsuleEntities2")
+        public CapsuleEntities()
+            : base("name=CapsuleEntities")
         {
-            this.Configuration.LazyLoadingEnabled =false;
+            this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
-            
         }
     
-        public virtual DbSet<TaskModel> TaskModels { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<Task> Tasks { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }
