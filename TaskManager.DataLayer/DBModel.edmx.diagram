@@ -4,12 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cebc62a901f441e98004675c43d37bd7" Name="Diagram1">
-        <EntityTypeShape EntityType="CapsuleModel.TaskModel" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CapsuleModel.Project" Width="1.5" PointX="3.625" PointY="1.125" />
-        <EntityTypeShape EntityType="CapsuleModel.User" Width="1.5" PointX="5.875" PointY="5.125" />
-        <AssociationConnector Association="CapsuleModel.FK_Task_Project" />
-        <AssociationConnector Association="CapsuleModel.FK_Users_Task" />
+      <Diagram DiagramId="1114c2e2ee7347a89aba314479eda1bd" Name="Diagram1">
+        <EntityTypeShape EntityType="CapsuleModel.Project" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CapsuleModel.Task" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CapsuleModel.User" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="CapsuleModel.FK_Task_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="CapsuleModel.FK_Users_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="CapsuleModel.FK_Users_Task" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
