@@ -9,48 +9,48 @@ namespace TaskManager.DataLayer
 {
     public class TaskDataLayer
     {
-        public List<TaskModel> GetTasksList()
+        public List<Task> GetTasksList()
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
-                return dbContext.TaskModels.ToList();
+                return dbContext.Tasks.ToList();
             }
         }
-        public List<TaskModel> GetTasksByName(string taskName)
+        public List<Task> GetTasksByName(string taskName)
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
-                return dbContext.TaskModels.Where(x => x.Task.Contains(taskName)).ToList();
+                return dbContext.Tasks.Where(x => x.Task1.Contains(taskName)).ToList();
             }
         }
-        public List<TaskModel> GetTasksByProjectID(int projId)
+        public List<Task> GetTasksByProjectID(int projId)
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
-                return dbContext.TaskModels.Where(x => x.Project_ID == projId).ToList();
-            }
-        }
-
-        public TaskModel GetTaskById(int taskId)
-        {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
-            {
-                return dbContext.TaskModels.Find(taskId);
+                return dbContext.Tasks.Where(x => x.Project_ID == projId).ToList();
             }
         }
 
-        public void AddTask(TaskModel task)
+        public Task GetTaskById(int taskId)
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
-                dbContext.TaskModels.Add(task);
+                return dbContext.Tasks.Find(taskId);
+            }
+        }
+
+        public void AddTask(Task task)
+        {
+            using (CapsuleEntities dbContext = new CapsuleEntities())
+            {
+                dbContext.Tasks.Add(task);
                 dbContext.SaveChanges();
             }
         }
 
-        public void UpdateTask(TaskModel task)
+        public void UpdateTask(Task task)
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
                 dbContext.Entry(task).State = System.Data.Entity.EntityState.Modified;
                 dbContext.SaveChanges();
@@ -59,10 +59,10 @@ namespace TaskManager.DataLayer
 
         public void DeleteTask(int taskId)
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
-                var task = dbContext.TaskModels.Find(taskId);
-                if (task != null)dbContext.TaskModels.Remove(task);
+                var task = dbContext.Tasks.Find(taskId);
+                if (task != null)dbContext.Tasks.Remove(task);
                 dbContext.SaveChanges();
             }
         }
