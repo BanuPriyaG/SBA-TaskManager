@@ -18,9 +18,10 @@ namespace TaskManager.DataLayer
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Employee_ID { get; set; }
-        public int Project_ID { get; set; }
-        public int Task_ID { get; set; }
+        public Nullable<int> Project_ID { get; set; }
+        public Nullable<int> Task_ID { get; set; }
     
         public virtual Project Project { get; set; }
+        public virtual Task Task { get; set; }
     }
 }
