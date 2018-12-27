@@ -27,6 +27,7 @@ namespace WebAPI
             {
                 Formatting = Formatting.Indented,
                 TypeNameHandling = TypeNameHandling.Objects,
+                DateFormatString= "yyyy-MM-dd",
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
             config.Formatters.Add(formatter);
