@@ -25,7 +25,7 @@ namespace TaskManger.Test
             };
             var result = controller.GetAllTasks();
             Assert.NotNull(result);
-            Assert.IsInstanceOf<OkNegotiatedContentResult<List<TaskModel>>>(result);
+            Assert.IsInstanceOf<OkNegotiatedContentResult<List<TaskManager.DataLayer.Task>>>(result);
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace TaskManger.Test
             };
             var result = controller.GetTask(1);
             Assert.NotNull(result);
-            Assert.IsInstanceOf<OkNegotiatedContentResult<TaskModel>>(result);
+            Assert.IsInstanceOf<OkNegotiatedContentResult<TaskManager.DataLayer.Task>>(result);
         }
 
         [Test]
@@ -49,10 +49,10 @@ namespace TaskManger.Test
             {
                 RequestUri = new Uri("http://localhost")
             };
-            var task = new TaskModel()
+            var task = new TaskManager.DataLayer.Task()
             {
                 Task_Id = 4,
-                Task = "task4",
+                Task1 = "task4",
                 ParentTask = "task1",
                 Start_Date = DateTime.Now,
                 End_Date = new DateTime(2018, 12, 16),
@@ -72,10 +72,10 @@ namespace TaskManger.Test
             {
                 RequestUri = new Uri("http://localhost")
             };
-            var task = new TaskModel()
+            var task = new TaskManager.DataLayer.Task()
             {
                 Task_Id = 1,
-                Task = "task1",
+                Task1 = "task1",
                 ParentTask = "task3",
                 Start_Date = DateTime.Now,
                 End_Date = new DateTime(2018, 12, 12),
