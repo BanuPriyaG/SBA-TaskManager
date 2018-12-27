@@ -10,7 +10,7 @@ namespace TaskManager.DataLayer
     {
         public List<User> GetUsersList()
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
                 return dbContext.Users.ToList();
             }
@@ -18,7 +18,7 @@ namespace TaskManager.DataLayer
 
         public User GetUserById(int userId)
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
                 return dbContext.Users.Find(userId);
             }
@@ -26,7 +26,7 @@ namespace TaskManager.DataLayer
 
         public void AddUser(User user)
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
                 dbContext.Users.Add(user);
                 dbContext.SaveChanges();
@@ -35,7 +35,7 @@ namespace TaskManager.DataLayer
 
         public void UpdateUser(User user)
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
                 dbContext.Entry(user).State = System.Data.Entity.EntityState.Modified;
                 dbContext.SaveChanges();
@@ -44,7 +44,7 @@ namespace TaskManager.DataLayer
 
         public List<User> GetByUserName(string userName)
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
                 return dbContext.Users.Where(a => a.FirstName.Contains(userName) || a.LastName.Contains(userName)).ToList();
             }
@@ -52,7 +52,7 @@ namespace TaskManager.DataLayer
 
         public void DeleteUser(int userId)
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
                 var user = dbContext.Users.Find(userId);
                 if (user != null) dbContext.Users.Remove(user);
