@@ -10,7 +10,7 @@ namespace TaskManager.DataLayer
     {
         public List<Project> GetProjectsList()
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
                 return dbContext.Projects.ToList();
             }
@@ -18,7 +18,7 @@ namespace TaskManager.DataLayer
 
         public List<Project> GetProjectByName(string projectName)
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
                 var result = dbContext.Projects.Where(a => a.Project1.Contains(projectName));
                 return result.ToList();
@@ -27,7 +27,7 @@ namespace TaskManager.DataLayer
 
         public Project GetProjectById(int projectId)
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
                 return dbContext.Projects.Find(projectId);
             }
@@ -35,7 +35,7 @@ namespace TaskManager.DataLayer
 
         public void AddProject(Project project)
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
                 dbContext.Projects.Add(project);
                 dbContext.SaveChanges();
@@ -44,7 +44,7 @@ namespace TaskManager.DataLayer
 
         public void UpdateProject(Project project)
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
                 dbContext.Entry(project).State = System.Data.Entity.EntityState.Modified;
                 dbContext.SaveChanges();
@@ -53,7 +53,7 @@ namespace TaskManager.DataLayer
 
         public void DeleteProject(int projectId)
         {
-            using (CapsuleEntities2 dbContext = new CapsuleEntities2())
+            using (CapsuleEntities dbContext = new CapsuleEntities())
             {
                 var project = dbContext.Projects.Find(projectId);
                 if (project != null) dbContext.Projects.Remove(project);
