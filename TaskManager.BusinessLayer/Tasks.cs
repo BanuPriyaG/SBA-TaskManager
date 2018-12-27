@@ -9,36 +9,36 @@ namespace TaskManager.BusinessLayer
 {
     public static class Tasks
     {
-        public static List<TaskModel> GetAllTasks()
+        public static List<DataLayer.Task> GetAllTasks()
         {
             TaskDataLayer dataLayer = new TaskDataLayer();
             return dataLayer.GetTasksList();
         }
 
-        public static List<TaskModel> GetTasksByProjectID(int projId)
+        public static List<DataLayer.Task> GetTasksByProjectID(int projId)
         {
             TaskDataLayer dataLayer = new TaskDataLayer();
             return dataLayer.GetTasksByProjectID(projId);
         }
-        public static TaskModel GetTaskById(int taskId)
+        public static DataLayer.Task GetTaskById(int taskId)
         {
             TaskDataLayer dataLayer = new TaskDataLayer();
             return dataLayer.GetTaskById(taskId);
         }
 
-        public static object GetTasksByName(string taskName)
+        public static List<DataLayer.Task> GetTasksByName(string taskName)
         {
             TaskDataLayer dataLayer = new TaskDataLayer();
             return dataLayer.GetTasksByName(taskName);
         }
 
-        public static void AddTask(TaskModel task)
+        public static void AddTask(DataLayer.Task task)
         {
             TaskDataLayer dataLayer = new TaskDataLayer();
             dataLayer.AddTask(task);
         }
 
-        public static void UpdateTask(TaskModel task)
+        public static void UpdateTask(DataLayer.Task task)
         {
             TaskDataLayer dataLayer = new TaskDataLayer();
             dataLayer.UpdateTask( task);
