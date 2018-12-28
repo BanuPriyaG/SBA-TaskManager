@@ -32,10 +32,10 @@ namespace TaskManager.BusinessLayer
             return dataLayer.GetTasksByName(taskName);
         }
 
-        public static void AddTask(DataLayer.Task task)
+        public static void AddTask(DataLayer.Task task, int? userId)
         {
             TaskDataLayer dataLayer = new TaskDataLayer();
-            dataLayer.AddTask(task);
+            dataLayer.AddTask(task, userId);
         }
 
         public static void UpdateTask(DataLayer.Task task)

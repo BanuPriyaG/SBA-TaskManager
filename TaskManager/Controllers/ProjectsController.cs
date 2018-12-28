@@ -13,7 +13,22 @@ namespace TaskManager.ServiceLayer.Controllers
         {
             try
             {
-                var response = Projects.GetAllProjects();
+                var response = Projects.GetProjectBasedTaskDetails();
+                if (response != null) return Ok(response);
+                else return NotFound();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [Route("api/projects/taskDetails")]
+        public IHttpActionResult GetProjectBasedTaskDetails()
+        {
+            try
+            {
+                var response = Projects.GetProjectBasedTaskDetails();
                 if (response != null) return Ok(response);
                 else return NotFound();
             }

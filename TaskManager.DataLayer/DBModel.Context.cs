@@ -12,6 +12,8 @@ namespace TaskManager.DataLayer
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class CapsuleEntities : DbContext
     {
@@ -30,5 +32,47 @@ namespace TaskManager.DataLayer
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
         public virtual DbSet<User> Users { get; set; }
+    
+        public virtual ObjectResult<GetProjectsList_Result> GetProjectsList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProjectsList_Result>("GetProjectsList");
+        }
+    
+        public virtual int InsertTaskAndUpdateUser(string task, Nullable<System.DateTime> start_Date, Nullable<System.DateTime> end_Date, Nullable<int> priority, string parentTask, Nullable<int> project_ID, string status, Nullable<int> user_ID, ObjectParameter identity)
+        {
+            var taskParameter = task != null ?
+                new ObjectParameter("Task", task) :
+                new ObjectParameter("Task", typeof(string));
+    
+            var start_DateParameter = start_Date.HasValue ?
+                new ObjectParameter("Start_Date", start_Date) :
+                new ObjectParameter("Start_Date", typeof(System.DateTime));
+    
+            var end_DateParameter = end_Date.HasValue ?
+                new ObjectParameter("End_Date", end_Date) :
+                new ObjectParameter("End_Date", typeof(System.DateTime));
+    
+            var priorityParameter = priority.HasValue ?
+                new ObjectParameter("Priority", priority) :
+                new ObjectParameter("Priority", typeof(int));
+    
+            var parentTaskParameter = parentTask != null ?
+                new ObjectParameter("ParentTask", parentTask) :
+                new ObjectParameter("ParentTask", typeof(string));
+    
+            var project_IDParameter = project_ID.HasValue ?
+                new ObjectParameter("Project_ID", project_ID) :
+                new ObjectParameter("Project_ID", typeof(int));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var user_IDParameter = user_ID.HasValue ?
+                new ObjectParameter("User_ID", user_ID) :
+                new ObjectParameter("User_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertTaskAndUpdateUser", taskParameter, start_DateParameter, end_DateParameter, priorityParameter, parentTaskParameter, project_IDParameter, statusParameter, user_IDParameter, identity);
+        }
     }
 }

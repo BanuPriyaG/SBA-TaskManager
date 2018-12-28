@@ -58,7 +58,7 @@ namespace TaskManger.Test
                 End_Date = new DateTime(2018, 12, 16),
                 Priority = 3
             };
-            var result = controller.Post(task);
+            var result = controller.Post(task, 2);
             Assert.NotNull(result);
             Assert.AreSame("Added", (result as OkNegotiatedContentResult<string>).Content);
             Assert.IsInstanceOf<OkNegotiatedContentResult<string>>(result);

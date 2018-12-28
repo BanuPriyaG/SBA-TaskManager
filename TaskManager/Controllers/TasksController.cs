@@ -62,11 +62,11 @@ namespace TaskManager.ServiceLayer.Controllers
                 throw ex;
             }
         }
-        public IHttpActionResult Post(DataLayer.Task task)
+        public IHttpActionResult Post(DataLayer.Task task, int? userId)
         {
             try
             {
-                Tasks.AddTask(task);
+                Tasks.AddTask(task, userId);
                 return Ok("Added");
             }
             catch (Exception ex)

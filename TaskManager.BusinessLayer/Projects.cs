@@ -9,10 +9,10 @@ namespace TaskManager.BusinessLayer
 {
     public static class Projects
     {
-        public static List<Project> GetAllProjects()
+        public static List<GetProjectsList_Result> GetProjectBasedTaskDetails()
         {
             ProjectDataLayer dataLayer = new ProjectDataLayer();
-            return dataLayer.GetProjectsList();
+            return dataLayer.GetProjectBasedTaskDetails();
         }
 
         public static List<Project> GetProjectByName(string projectName)
@@ -20,6 +20,7 @@ namespace TaskManager.BusinessLayer
             ProjectDataLayer dataLayer = new ProjectDataLayer();
             return dataLayer.GetProjectByName(projectName);
         }
+
         public static Project GetProjectById(int projectId)
         {
             ProjectDataLayer dataLayer = new ProjectDataLayer();

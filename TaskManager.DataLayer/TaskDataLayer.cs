@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,11 +40,13 @@ namespace TaskManager.DataLayer
             }
         }
 
-        public void AddTask(Task task)
+        public void AddTask(Task task, int? userId)
         {
             using (CapsuleEntities dbContext = new CapsuleEntities())
             {
-                dbContext.Tasks.Add(task);
+                ObjectParameter outObj = new ObjectParameter("Identity", 0);
+                dbContext.InsertTaskAndUpdateUser(task.Task1, task.Start_Date, task.End_Date,
+                    task.Priority, task.ParentTask, task.Project_ID, task.Status, userId, outObj);
                 dbContext.SaveChanges();
             }
         }
