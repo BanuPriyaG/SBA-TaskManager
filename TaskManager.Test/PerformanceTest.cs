@@ -12,27 +12,27 @@ namespace TaskManager.Test
 {
     public class PerformanceTest
     {
-        [PerfBenchmark(NumberOfIterations = 1, RunMode = RunMode.Throughput,
+        [PerfBenchmark(NumberOfIterations = 500, RunMode = RunMode.Throughput,
         TestMode = TestMode.Test, SkipWarmups = true)]
-        [ElapsedTimeAssertion(MaxTimeMilliseconds = 5000)]
+        [ElapsedTimeAssertion(MaxTimeMilliseconds = 600000)]
         public void Benchmark_Performance_ElaspedTime_User()
         {
             var user = new Users();
             user.Test_GetAllUsers();
         }
 
-        [PerfBenchmark(NumberOfIterations = 1, RunMode = RunMode.Throughput,
+        [PerfBenchmark(NumberOfIterations = 500, RunMode = RunMode.Throughput,
         TestMode = TestMode.Test, SkipWarmups = true)]
-        [ElapsedTimeAssertion(MaxTimeMilliseconds = 5000)]
+        [ElapsedTimeAssertion(MaxTimeMilliseconds = 600000)]
         public void Benchmark_Performance_ElaspedTime_Task()
         {
             var task = new Tasks();
             task.Test_GetAllTasks();
         }
 
-        [PerfBenchmark(NumberOfIterations = 1, RunMode = RunMode.Throughput,
+        [PerfBenchmark(NumberOfIterations = 500, RunMode = RunMode.Throughput,
         TestMode = TestMode.Test, SkipWarmups = true)]
-        [ElapsedTimeAssertion(MaxTimeMilliseconds = 5000)]
+        [ElapsedTimeAssertion(MaxTimeMilliseconds = 600000)]
         public void Benchmark_Performance_ElaspedTime_Project()
         {
             var proj = new Projects();
