@@ -2,88 +2,85 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http.Results;
-using TaskManager.DataLayer;
 using TaskManager.ServiceLayer.Controllers;
 
-namespace TaskManger.Test
+namespace TaskManager.Test
 {
     [TestFixture]
-    public class Tasks
+    public class Projects
     {
         [Test]
-        public void Test_GetAllTasks()
+        public void Test_GetAllProjects()
         {
-            var controller = new TasksController();
+            var controller = new ProjectsController();
             controller.Request = new HttpRequestMessage()
             {
                 RequestUri = new Uri("http://localhost")
             };
-            var result = controller.GetAllTasks();
+            var result = controller.GetAllProjects();
             Assert.NotNull(result);
-            Assert.IsInstanceOf<OkNegotiatedContentResult<List<TaskManager.DataLayer.Task>>>(result);
+            Assert.IsInstanceOf<OkNegotiatedContentResult<List<TaskManager.DataLayer.Project>>>(result);
         }
 
         [Test]
-        public void Test_GetTaskById()
+        public void Test_GetProjectBasedTaskDetails()
         {
-            var controller = new TasksController();
+            var controller = new ProjectsController();
             controller.Request = new HttpRequestMessage()
             {
                 RequestUri = new Uri("http://localhost")
             };
-            var result = controller.GetTask(1);
+            var result = controller.GetProjectBasedTaskDetails();
             Assert.NotNull(result);
-            Assert.IsInstanceOf<OkNegotiatedContentResult<TaskManager.DataLayer.Task>>(result);
+            Assert.IsInstanceOf<OkNegotiatedContentResult<List<TaskManager.DataLayer.GetProjectsList_Result>>>(result);
         }
 
         [Test]
-        public void Test_GetTasksByName()
+        public void Test_GetProjectByName()
         {
-            var controller = new TasksController();
+            var controller = new ProjectsController();
             controller.Request = new HttpRequestMessage()
             {
                 RequestUri = new Uri("http://localhost")
             };
-            var result = controller.GetTasksByName("");
+            var result = controller.GetProjectByName("");
             Assert.NotNull(result);
-            Assert.IsInstanceOf<OkNegotiatedContentResult<List<TaskManager.DataLayer.Task>>>(result);
+            Assert.IsInstanceOf<OkNegotiatedContentResult<List<TaskManager.DataLayer.Project>>>(result);
         }
 
         [Test]
-        public void Test_GetTasksByProjectID()
+        public void Test_GetProject()
         {
-            var controller = new TasksController();
+            var controller = new ProjectsController();
             controller.Request = new HttpRequestMessage()
             {
                 RequestUri = new Uri("http://localhost")
             };
-            var result = controller.GetTasksByProjectID(1);
+            var result = controller.GetProject(1);
             Assert.NotNull(result);
-            Assert.IsInstanceOf<OkNegotiatedContentResult<List<TaskManager.DataLayer.Task>>>(result);
+            Assert.IsInstanceOf<OkNegotiatedContentResult<TaskManager.DataLayer.Project>>(result);
         }
 
         [Test]
         public void Test_Post()
         {
-            var controller = new TasksController();
+            var controller = new ProjectsController();
             controller.Request = new HttpRequestMessage()
             {
                 RequestUri = new Uri("http://localhost")
             };
-            var task = new TaskManager.DataLayer.Task()
+            var project = new TaskManager.DataLayer.Project()
             {
-                Task1 = "task4",
-                ParentTask = "task1",
+                Project1 = "Project4",                
                 Start_Date = DateTime.Now,
                 End_Date = new DateTime(2018, 12, 16),
-                Priority = 3
+                Priority = 3                
             };
-            var result = controller.Post(task, 2);
+            var result = controller.Post(project);
             Assert.NotNull(result);
             Assert.AreSame("Added", (result as OkNegotiatedContentResult<string>).Content);
             Assert.IsInstanceOf<OkNegotiatedContentResult<string>>(result);
@@ -92,21 +89,20 @@ namespace TaskManger.Test
         [Test]
         public void Test_Put()
         {
-            var controller = new TasksController();
+            var controller = new ProjectsController();
             controller.Request = new HttpRequestMessage()
             {
                 RequestUri = new Uri("http://localhost")
             };
-            var task = new TaskManager.DataLayer.Task()
+            var project = new TaskManager.DataLayer.Project()
             {
-                Task_Id = 1,
-                Task1 = "task1",
-                ParentTask = "task3",
+                Project_ID = 2,
+                Project1 = "Project1",
                 Start_Date = DateTime.Now,
-                End_Date = new DateTime(2018, 12, 12),
-                Priority = 1
+                End_Date = new DateTime(2019, 12, 16),
+                Priority = 3
             };
-            var result = controller.Put(task);
+            var result = controller.Put(project);
             Assert.NotNull(result);
             Assert.AreSame("Updated", (result as OkNegotiatedContentResult<string>).Content);
             Assert.IsInstanceOf<OkNegotiatedContentResult<string>>(result);
@@ -115,12 +111,12 @@ namespace TaskManger.Test
         [Test]
         public void Test_Delete()
         {
-            var controller = new TasksController();
+            var controller = new ProjectsController();
             controller.Request = new HttpRequestMessage()
             {
                 RequestUri = new Uri("http://localhost")
             };
-            var result = controller.Delete(4);
+            var result = controller.Delete(2);
             Assert.NotNull(result);
             Assert.AreSame("Deleted", (result as OkNegotiatedContentResult<string>).Content);
             Assert.IsInstanceOf<OkNegotiatedContentResult<string>>(result);
