@@ -9,20 +9,6 @@ namespace TaskManager.ServiceLayer.Controllers
     [EnableCors(origins:"*", headers:"*", methods:"*")]
     public class ProjectsController : ApiController,IDisposable
     {
-        public IHttpActionResult GetAllProjects()
-        {
-            try
-            {
-                var response = Projects.GetProjectBasedTaskDetails();
-                if (response != null) return Ok(response);
-                else return NotFound();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         [Route("api/projects/taskDetails")]
         public IHttpActionResult GetProjectBasedTaskDetails()
         {

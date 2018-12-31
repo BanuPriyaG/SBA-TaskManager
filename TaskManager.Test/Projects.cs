@@ -13,18 +13,6 @@ namespace TaskManager.Test
     [TestFixture]
     public class Projects
     {
-        [Test]
-        public void Test_GetAllProjects()
-        {
-            var controller = new ProjectsController();
-            controller.Request = new HttpRequestMessage()
-            {
-                RequestUri = new Uri("http://localhost")
-            };
-            var result = controller.GetAllProjects();
-            Assert.NotNull(result);
-            Assert.IsInstanceOf<OkNegotiatedContentResult<List<TaskManager.DataLayer.Project>>>(result);
-        }
 
         [Test]
         public void Test_GetProjectBasedTaskDetails()
